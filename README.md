@@ -8,4 +8,4 @@ COMP 3005 A
 | ---------------- | -------------- |
 | Arthur Atangana  | 101005197      |
 | Rebecca Elliott  | 101199034      |
-| Braeden Kloke    | $1234          |
+| Braeden Kloke    | 100895984      |
