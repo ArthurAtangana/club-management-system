@@ -26,7 +26,7 @@ public class ClubManagementCLI {
 
         // Log user into system
         if (login()) {
-            displayDashboard(user.getUsername());
+            displayDashboard(user);
         }
     }
 
@@ -67,19 +67,10 @@ public class ClubManagementCLI {
      *
      * @author Braeden Kloke
      */
-    private void displayDashboard(String username) {
-        // Decision to implement a more general form for this method to make
-        // it easier to test and modify in the future.
-        //
-        // Alternative would be to simply pull logged-in user's profile.
-        // However, code breaks when user = null.
-
-        // Get user's profile
-        UserProfile profile  = profileController.getProfile(username);
-
+    private void displayDashboard(UserProfile user) {
         // Display dashboard
-        System.out.println("Displaying " + profile.getGroup() + " dashboard ...");
+        System.out.println("Displaying " + user.getGroup() + " dashboard ...");
         System.out.println("=================================");
-        System.out.println(profile);
+        System.out.println(user);
     }
 }
