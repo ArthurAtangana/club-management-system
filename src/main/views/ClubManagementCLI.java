@@ -21,13 +21,13 @@ public class ClubManagementCLI {
     public ClubManagementCLI() {
 
         // Initialize system
-        user = null;
+        user = new UserProfile();
         profileController = new ProfileController();
 
         // Log user into system
-        if (login()) {
-            displayDashboard(user);
-        }
+        while (!login()) {} // For testing, comment out this line if you want to skip logging in!
+
+        displayDashboard(user);
     }
 
     /**
@@ -68,7 +68,6 @@ public class ClubManagementCLI {
      * @author Braeden Kloke
      */
     private void displayDashboard(UserProfile user) {
-        // Display dashboard
         System.out.println("Displaying " + user.getGroup() + " dashboard ...");
         System.out.println("=================================");
         System.out.println(user);
