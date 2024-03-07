@@ -43,15 +43,19 @@ public class ClubManagementCLI {
         LoginController loginController = new LoginController();
         Scanner scanner = new Scanner(System.in);
 
-        // prompt user for username and password
+        // Prompt user for username and password
         System.out.println("Enter username: ");
         username = scanner.nextLine();
         System.out.println("Enter password: ");
         password = scanner.nextLine();
 
-        // authenticate user
+        // Authenticate user
         if (loginController.authenticate(username, password)) {
+            System.out.println("User authenticated.");
+
+            System.out.println("Logging in ...");
             user = profileController.getProfile(username);
+
             return true;
         } else {
             return false;
@@ -64,11 +68,18 @@ public class ClubManagementCLI {
      * @author Braeden Kloke
      */
     private void displayDashboard(String username) {
-        // get user's profile
-        ProfileController profileController = new ProfileController();
+        // Decision to implement a more general form for this method to make
+        // it easier to test and modify in the future.
+        //
+        // Alternative would be to simply pull logged-in user's profile.
+        // However, code breaks when user = null.
+
+        // Get user's profile
         UserProfile profile  = profileController.getProfile(username);
 
-        // display profile
-        System.out.println(profile.toString());
+        // Display dashboard
+        System.out.println("Displaying " + profile.getGroup() + " dashboard ...");
+        System.out.println("=================================");
+        System.out.println(profile);
     }
 }

@@ -10,7 +10,14 @@ import java.util.Collection;
  */
 public class UserProfile {
 
+    public enum Group {
+        MEMBER,
+        TRAINER,
+        ADMIN
+    }
+
     private String username;
+    private Group group;
     private Collection<FitnessGoal> fitnessGoals;
     private Collection<HealthMetric> healthMetrics;
 
@@ -20,6 +27,7 @@ public class UserProfile {
      */
     public UserProfile() {
         username = "braeden";
+        group = Group.MEMBER;
         fitnessGoals = null;
         healthMetrics = null;
     }
@@ -34,4 +42,6 @@ public class UserProfile {
     }
 
     public String getUsername() {return username;}
+
+    public Group getGroup() {return group;}
 }
