@@ -1,9 +1,9 @@
-package main.views;
+package main.views.cli;
 
 import main.controllers.*;
 import main.models.*;
-import main.views.commands.Command;
-import main.views.commands.UpdatePersonalInfoCommand;
+import main.views.cli.displays.*;
+import main.views.cli.commands.*;
 
 import java.util.*;
 
@@ -21,6 +21,7 @@ public class ClubManagementCLI {
     private ProfileController profileController;
     private Scanner scanner;
     private Map<String, Command> commands;
+    private Display display;
 
     public ClubManagementCLI() {
 
@@ -28,15 +29,56 @@ public class ClubManagementCLI {
         profileController = new ProfileController();
         scanner = new Scanner(System.in);
         user = new UserProfile();
+        display = new WelcomeDisplay(this);
 
         commands = new HashMap<String, Command>();
         commands.put("1", new UpdatePersonalInfoCommand(user));
 
         // Log user into system
-        while (!login()) {} // For testing, comment out this line if you want to skip logging in!
+        //while (!login()) {} // For testing, comment out this line if you want to skip logging in!
 
-        displayDashboard(user);
+        //displayDashboard(user);
+
+        setDisplay(new WelcomeDisplay(this));
+
+        while (true) {
+            String userCommand = scanner.nextLine();
+
+            if (display.getCommands().containsKey(userCommand)) {
+                Command command = (Command) display.getCommands().get(userCommand);
+                if (command instanceof LoginCommand) {
+                    display.handleLoginCommand();
+                } else if (command instanceof QuitCommand) {
+                    display.handleQuitCommand();
+                }
+            } else {
+                display.handleInvalidCommand();
+            }
+
+
+        }
+
+        // while true
+        //   get user input
+        //   handle user input
+        //     display.handleCommand
+
+
     }
+
+    /**
+     * Sets a new display.
+     */
+    public void setDisplay(Display display) {
+        this.display.exit();
+        this.display = display;
+        this.display.enter();
+    }
+
+    /**
+     * Sets the user for the system.
+     */
+    public void setUser(UserProfile user) {this.user = user;}
 
     /**
      * Prompts user for username and password. Logs user into system
@@ -95,7 +137,7 @@ public class ClubManagementCLI {
 
         if (commands.containsKey(command)) {
             System.out.println("Valid command.");
-            ((Command) commands.get(command)).execute();
+            //((Command) commands.get(command)).execute();
         } else {
             System.out.println("Invalid command.");
         }

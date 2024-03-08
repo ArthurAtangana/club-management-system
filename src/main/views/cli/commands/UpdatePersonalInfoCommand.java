@@ -1,4 +1,4 @@
-package main.views.commands;
+package main.views.cli.commands;
 
 import main.controllers.ProfileController;
 import main.models.UserProfile;

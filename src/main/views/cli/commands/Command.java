@@ -1,6 +1,3 @@
-package main.views.commands;
+package main.views.cli.commands;
 
-public interface Command {
-
-    public void execute();
-}
+public interface Command {}

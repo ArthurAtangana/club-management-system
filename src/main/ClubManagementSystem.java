@@ -1,6 +1,6 @@
 package main;
 
-import main.views.ClubManagementCLI;
+import main.views.cli.ClubManagementCLI;
 
 /**
  * Class representing a Health and Fitness Club Management System.
