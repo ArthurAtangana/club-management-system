@@ -13,57 +13,50 @@ import java.util.*;
  *
  * @author Braeden Kloke
  * @version March 7, 2024
- * Initialize member use cases.
  */
 public class ClubManagementCLI {
 
-    private UserProfile user; // User logged into system
-    private ProfileController profileController;
-    private Scanner scanner;
-    private Map<String, Command> commands;
+    private User user; // User logged into system
+    private String userInput;
+    private Object buffer; // Utility buffer
     private Display display;
 
     public ClubManagementCLI() {
 
         // Initialize system
-        profileController = new ProfileController();
-        scanner = new Scanner(System.in);
-        user = new UserProfile();
+        Scanner scanner = new Scanner(System.in);
+        user = new User();
         display = new WelcomeDisplay(this);
+        buffer = null;
 
-        commands = new HashMap<String, Command>();
-        commands.put("1", new UpdatePersonalInfoCommand(user));
-
-        // Log user into system
-        //while (!login()) {} // For testing, comment out this line if you want to skip logging in!
-
-        //displayDashboard(user);
 
         setDisplay(new WelcomeDisplay(this));
 
         while (true) {
-            String userCommand = scanner.nextLine();
+            userInput = scanner.nextLine();
 
-            if (display.getCommands().containsKey(userCommand)) {
-                Command command = (Command) display.getCommands().get(userCommand);
-                if (command instanceof LoginCommand) {
-                    display.handleLoginCommand();
-                } else if (command instanceof QuitCommand) {
-                    display.handleQuitCommand();
-                }
+            if (display.hasCommands()) {
+                handleUserCommand();
             } else {
-                display.handleInvalidCommand();
+                display.handleUserInput();
             }
-
-
         }
+    }
 
-        // while true
-        //   get user input
-        //   handle user input
-        //     display.handleCommand
-
-
+    /**
+     * Handles commands.
+     */
+    private void handleUserCommand() {
+        if (display.getCommands().containsKey(userInput)) {
+            Command command = (Command) display.getCommands().get(userInput);
+            if (command instanceof LoginCommand) {
+                display.handleLoginCommand();
+            } else if (command instanceof QuitCommand) {
+                display.handleQuitCommand();
+            }
+        } else {
+            display.handleInvalidCommand();
+        }
     }
 
     /**
@@ -78,69 +71,25 @@ public class ClubManagementCLI {
     /**
      * Sets the user for the system.
      */
-    public void setUser(UserProfile user) {this.user = user;}
+    public void setUser(User user) {this.user = user;}
 
     /**
-     * Prompts user for username and password. Logs user into system
-     * if login attempt is valid.
-     *
-     * @return True if valid login attempt, false otherwise.
-     *
-     * @author Braeden Kloke
+     * Retrieves the most recent user of the system.
      */
-    private boolean login() {
-        String username, password;
-        LoginController loginController = new LoginController();
-
-        // Prompt user for username and password
-        System.out.println("Enter username: ");
-        username = scanner.nextLine();
-        System.out.println("Enter password: ");
-        password = scanner.nextLine();
-
-        // Authenticate user
-        if (loginController.authenticate(username, password)) {
-            System.out.println("User authenticated.");
-            System.out.println("Logging in ...");
-            user = profileController.getProfile(username);
-            return true;
-        } else {
-            return false;
-        }
-    }
+    public User getUser() {return user;}
 
     /**
-     * Displays the system dashboard for a given user.
-     *
-     * @author Braeden Kloke
+     * Puts in an object in the buffer.
      */
-    private void displayDashboard(UserProfile user) {
-        System.out.println("Displaying " + user.getGroup() + " dashboard ...");
-        System.out.println("=================================");
-        System.out.println(user);
+    public void setBuffer(Object obj) {buffer = obj;}
 
-        // Print member commands
-        System.out.println("=================================");
-        System.out.println("Commands: ");
-        System.out.println("1: update personal information");
-        System.out.println("2: update fitness goals");
-        System.out.println("3: update health metrics");
-        System.out.println("4: schedule personal training session");
-        System.out.println("5: schedule group fitness class");
+    /**
+     * Retrieves the most recent user input.
+     */
+    public String getUserInput() {return userInput;}
 
-        // Prompt member to enter a command
-        System.out.println("=================================");
-        System.out.println("Enter command: ");
-        String command = scanner.nextLine();
-
-        // if command is valid ...
-
-        if (commands.containsKey(command)) {
-            System.out.println("Valid command.");
-            //((Command) commands.get(command)).execute();
-        } else {
-            System.out.println("Invalid command.");
-        }
-    }
-
+    /**
+     * Retrieves the contents of the buffer.
+     */
+    public Object getBuffer() {return buffer;}
 }

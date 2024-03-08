@@ -20,6 +20,8 @@ public class MemberDisplay extends Display {
     @Override
     public void display() {
         System.out.println("Displaying member dashboard ...");
+        System.out.println("=================================");
+        System.out.println(context.getUser());
         displayCommands();
     }
 

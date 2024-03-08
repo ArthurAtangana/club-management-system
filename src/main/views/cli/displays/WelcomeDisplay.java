@@ -30,6 +30,6 @@ public class WelcomeDisplay extends Display {
 
     @Override
     public void handleLoginCommand() {
-        context.setDisplay(new LoginDisplay(context));
+        context.setDisplay(new UsernameLoginPrompt(context));
     }
 }

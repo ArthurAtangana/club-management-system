@@ -1,6 +1,6 @@
 package main.controllers;
 
-import main.models.UserProfile;
+import main.models.User;
 
 /**
  * Class representing a controller for retrieving and updating user profiles.
@@ -9,9 +9,9 @@ import main.models.UserProfile;
  * @version March 7, 2024
  * Initialize interface and stub implementations.
  */
-public class ProfileController {
+public class UserController {
 
-    public ProfileController() {}
+    public UserController() {}
 
     /**
      * Retrieves a given user's profile.
@@ -19,8 +19,8 @@ public class ProfileController {
      * @param username Name of user.
      * @return Profile of user.
      */
-    public UserProfile getProfile(String username) {
-        return new UserProfile();
+    public User getUser(String username) {
+        return new User();
     }
 
     /**
@@ -28,6 +28,6 @@ public class ProfileController {
      *
      * @param newProfile New profile to replace current profile with.
      */
-    public void updateProfile(UserProfile newProfile) {
+    public void updateUser(User newProfile) {
     }
 }

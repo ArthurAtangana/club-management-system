@@ -46,6 +46,12 @@ public abstract class Display {
     }
 
     /**
+     * Returns true if this display has commands, false otherwise.
+     */
+    public boolean hasCommands() {return !commands.isEmpty();}
+
+
+    /**
      * Action to be performed upon entering this display.
      */
     public void enter() {display();}
@@ -69,4 +75,9 @@ public abstract class Display {
      * Handles the event of a quit command.
      */
     public void handleQuitCommand() {}
+
+    /**
+     * Handles the event of any user input.
+     */
+    public void handleUserInput() {}
 }

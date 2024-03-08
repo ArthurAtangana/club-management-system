@@ -8,7 +8,7 @@ import java.util.Collection;
  * @author Braeden Kloke
  * @version March 7, 2024
  */
-public class UserProfile {
+public class User {
 
     public enum Group {
         MEMBER,
@@ -25,7 +25,7 @@ public class UserProfile {
     /**
      * Default constructor.
      */
-    public UserProfile() {
+    public User() {
         username = "braeden";
         group = Group.MEMBER;
         fitnessGoals = null;
