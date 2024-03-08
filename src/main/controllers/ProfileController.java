@@ -22,4 +22,12 @@ public class ProfileController {
     public UserProfile getProfile(String username) {
         return new UserProfile();
     }
+
+    /**
+     * Updates a given user's profile.
+     *
+     * @param newProfile New profile to replace current profile with.
+     */
+    public void updateProfile(UserProfile newProfile) {
+    }
 }
