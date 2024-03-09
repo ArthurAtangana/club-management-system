@@ -8,5 +8,6 @@ package main.views;
  */
 public enum Command {
     QUIT,
-    LOGIN
+    LOGIN,
+    REGISTER
 }

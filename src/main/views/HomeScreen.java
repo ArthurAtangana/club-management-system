@@ -14,6 +14,7 @@ public class HomeScreen extends View {
     public HomeScreen(ClubManagementCLI context) {
         super(context);
         commands.put("1", Command.LOGIN);
+        commands.put("2", Command.REGISTER);
     }
 
     @Override
@@ -38,4 +39,7 @@ public class HomeScreen extends View {
     public void handleLoginCommand() {
         context.setView(new UsernameLoginPrompt(context));
     }
+
+    @Override
+    public void handleRegisterCommand() {context.setView(new UsernameRegisterPrompt(context));}
 }

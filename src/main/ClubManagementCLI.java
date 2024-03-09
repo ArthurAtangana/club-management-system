@@ -50,6 +50,8 @@ public class ClubManagementCLI {
                 view.handleLoginCommand();
             } else if (command.equals(Command.QUIT)) {
                 view.handleQuitCommand();
+            } else if (command.equals(Command.REGISTER)) {
+                view.handleRegisterCommand();
             }
         } else {
             view.handleInvalidCommand();

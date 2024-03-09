@@ -88,4 +88,6 @@ public abstract class View {
      * Handles the event of any user input.
      */
     public void handleUserInput() {}
+
+    public void handleRegisterCommand() {}
 }
