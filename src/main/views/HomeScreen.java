@@ -18,9 +18,8 @@ public class HomeScreen extends View {
     }
 
     @Override
-    public void display() {
+    public void displayInfo() {
         System.out.println("Welcome!");
-        displayCommands();
     }
 
     @Override

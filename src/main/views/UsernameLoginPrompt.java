@@ -9,7 +9,7 @@ public class UsernameLoginPrompt extends View {
     }
 
     @Override
-    public void display() {
+    public void displayInfo() {
         System.out.println("Enter username:");
     }
 

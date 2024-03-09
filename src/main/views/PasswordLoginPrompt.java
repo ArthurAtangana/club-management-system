@@ -11,7 +11,7 @@ public class PasswordLoginPrompt extends View {
     }
 
     @Override
-    public void display() {
+    public void displayInfo() {
         System.out.println("Enter password:");
     }
 
