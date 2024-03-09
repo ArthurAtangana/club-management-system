@@ -16,7 +16,8 @@ public class UsernameLoginPrompt extends View {
 
     @Override
     public void handleUserInput() {
-        context.setBuffer(context.getUserInput()); // temporarily store username
+        // Store username in buffer to use in authentication
+        context.setBuffer(context.getUserInput());
         context.setView(new PasswordLoginPrompt(context));
     }
 }

@@ -3,7 +3,7 @@ package main.views;
 import main.ClubManagementCLI;
 
 /**
- * Class representing the view to register a new user's username.
+ * Class representing the prompt to register a new user's username.
  *
  * @author Braeden Kloke
  * @version March 8, 2024
@@ -22,6 +22,8 @@ public class UsernameRegisterPrompt extends View {
 
     @Override
     public void handleUserInput() {
-        context.setView(new HomeScreen(context));
+        // Add username to buffer to use in next view
+        context.setBuffer(context.getUserInput());
+        context.setView(new PasswordRegisterPrompt(context));
     }
 }
