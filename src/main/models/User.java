@@ -3,10 +3,10 @@ package main.models;
 import java.util.Collection;
 
 /**
- * Class representing a user's profile in the system.
+ * Class representing a user in the system.
  *
  * @author Braeden Kloke
- * @version March 7, 2024
+ * @version March 8, 2024
  */
 public class User {
 
@@ -41,7 +41,18 @@ public class User {
 
     }
 
+    /**
+     * Retrieves this user's name.
+     *
+     * @return Name of user.
+     */
     public String getUsername() {return username;}
 
+    /**
+     * Retrieves this user's group.
+     * Users can be a member, trainer or admin.
+     *
+     * @return Group this user belongs to.
+     */
     public Group getGroup() {return group;}
 }
