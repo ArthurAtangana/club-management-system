@@ -10,9 +10,9 @@ import main.views.commands.QuitCommand;
  * @author Braeden Kloke
  * @version March 7, 2024
  */
-public class MemberDisplay extends Display {
+public class MemberDashboard extends View {
 
-    public MemberDisplay(ClubManagementCLI context) {
+    public MemberDashboard(ClubManagementCLI context) {
         super(context);
         commands.put("1", new QuitCommand());
     }
@@ -27,11 +27,11 @@ public class MemberDisplay extends Display {
 
     @Override
     public void handleInvalidCommand() {
-        context.setDisplay(new MemberDisplay(context));
+        context.setDisplay(new MemberDashboard(context));
     }
 
     @Override
     public void handleQuitCommand() {
-        context.setDisplay(new WelcomeDisplay(context));
+        context.setDisplay(new HomeScreen(context));
     }
 }

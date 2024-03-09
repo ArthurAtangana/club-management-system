@@ -10,9 +10,9 @@ import main.views.commands.LoginCommand;
  * @author Braeden Kloke
  * @version March 7, 2024
  */
-public class WelcomeDisplay extends Display {
+public class HomeScreen extends View {
 
-    public WelcomeDisplay(ClubManagementCLI context) {
+    public HomeScreen(ClubManagementCLI context) {
         super(context);
         commands.put("1", new LoginCommand());
     }
@@ -25,7 +25,7 @@ public class WelcomeDisplay extends Display {
 
     @Override
     public void handleInvalidCommand() {
-        context.setDisplay(new WelcomeDisplay(context));
+        context.setDisplay(new HomeScreen(context));
     }
 
     @Override

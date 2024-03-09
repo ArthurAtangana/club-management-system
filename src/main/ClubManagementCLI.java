@@ -4,8 +4,8 @@ import main.models.*;
 import main.views.commands.Command;
 import main.views.commands.LoginCommand;
 import main.views.commands.QuitCommand;
-import main.views.Display;
-import main.views.WelcomeDisplay;
+import main.views.View;
+import main.views.HomeScreen;
 
 import java.util.*;
 
@@ -21,18 +21,18 @@ public class ClubManagementCLI {
     private User user; // User logged into system
     private String userInput;
     private Object buffer; // Utility buffer
-    private Display display;
+    private View display;
 
     public ClubManagementCLI() {
 
         // Initialize system
         Scanner scanner = new Scanner(System.in);
         user = new User();
-        display = new WelcomeDisplay(this);
+        display = new HomeScreen(this);
         buffer = null;
 
 
-        setDisplay(new WelcomeDisplay(this));
+        setDisplay(new HomeScreen(this));
 
         while (true) {
             userInput = scanner.nextLine();
@@ -64,7 +64,7 @@ public class ClubManagementCLI {
     /**
      * Sets a new display.
      */
-    public void setDisplay(Display display) {
+    public void setDisplay(View display) {
         this.display.exit();
         this.display = display;
         this.display.enter();

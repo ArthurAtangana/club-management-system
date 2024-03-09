@@ -2,7 +2,7 @@ package main.views;
 
 import main.ClubManagementCLI;
 
-public class UsernameLoginPrompt extends Display {
+public class UsernameLoginPrompt extends View {
 
     public UsernameLoginPrompt(ClubManagementCLI context) {
         super(context);

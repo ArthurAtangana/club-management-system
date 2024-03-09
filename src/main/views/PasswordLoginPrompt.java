@@ -4,7 +4,7 @@ import main.controllers.LoginController;
 import main.controllers.UserController;
 import main.ClubManagementCLI;
 
-public class PasswordLoginPrompt extends Display {
+public class PasswordLoginPrompt extends View {
 
     public PasswordLoginPrompt(ClubManagementCLI context) {
         super(context);
@@ -25,7 +25,7 @@ public class PasswordLoginPrompt extends Display {
         if (loginController.authenticate(username, password)) {
             UserController profileController = new UserController();
             context.setUser(profileController.getUser(username));
-            context.setDisplay(new MemberDisplay(context));
+            context.setDisplay(new MemberDashboard(context));
         } else {
             context.setDisplay(new UsernameLoginPrompt(context));
         }

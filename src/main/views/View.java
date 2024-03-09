@@ -12,12 +12,12 @@ import java.util.*;
  * @author Braeden Kloke
  * @version March 7, 2024
  */
-public abstract class Display {
+public abstract class View {
 
     ClubManagementCLI context;
     Map<String, Command> commands;
 
-    public Display(ClubManagementCLI context) {
+    public View(ClubManagementCLI context) {
         this.context = context;
         commands = new HashMap<String, Command>();
     }
