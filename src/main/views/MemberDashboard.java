@@ -25,11 +25,11 @@ public class MemberDashboard extends View {
 
     @Override
     public void handleInvalidCommand() {
-        context.setDisplay(new MemberDashboard(context));
+        context.setView(new MemberDashboard(context));
     }
 
     @Override
     public void handleQuitCommand() {
-        context.setDisplay(new HomeScreen(context));
+        context.setView(new HomeScreen(context));
     }
 }

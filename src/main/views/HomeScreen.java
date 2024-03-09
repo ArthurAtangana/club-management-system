@@ -23,11 +23,11 @@ public class HomeScreen extends View {
 
     @Override
     public void handleInvalidCommand() {
-        context.setDisplay(new HomeScreen(context));
+        context.setView(new HomeScreen(context));
     }
 
     @Override
     public void handleLoginCommand() {
-        context.setDisplay(new UsernameLoginPrompt(context));
+        context.setView(new UsernameLoginPrompt(context));
     }
 }

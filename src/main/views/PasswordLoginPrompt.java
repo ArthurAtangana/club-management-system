@@ -25,9 +25,9 @@ public class PasswordLoginPrompt extends View {
         if (loginController.authenticate(username, password)) {
             UserController profileController = new UserController();
             context.setUser(profileController.getUser(username));
-            context.setDisplay(new MemberDashboard(context));
+            context.setView(new MemberDashboard(context));
         } else {
-            context.setDisplay(new UsernameLoginPrompt(context));
+            context.setView(new UsernameLoginPrompt(context));
         }
     }
 }

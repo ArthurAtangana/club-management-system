@@ -1,9 +1,7 @@
 package main;
 
 import main.models.*;
-import main.views.Command;
-import main.views.View;
-import main.views.HomeScreen;
+import main.views.*;
 
 import java.util.*;
 
@@ -19,26 +17,25 @@ public class ClubManagementCLI {
     private User user; // User logged into system
     private String userInput;
     private Object buffer; // Utility buffer
-    private View display;
+    private View view;
 
     public ClubManagementCLI() {
 
         // Initialize system
         Scanner scanner = new Scanner(System.in);
         user = new User();
-        display = new HomeScreen(this);
+        view = new HomeScreen(this);
         buffer = null;
 
-
-        setDisplay(new HomeScreen(this));
+        setView(new HomeScreen(this));
 
         while (true) {
             userInput = scanner.nextLine();
 
-            if (display.hasCommands()) {
+            if (view.hasCommands()) {
                 handleUserCommand();
             } else {
-                display.handleUserInput();
+                view.handleUserInput();
             }
         }
     }
@@ -47,25 +44,25 @@ public class ClubManagementCLI {
      * Handles commands.
      */
     private void handleUserCommand() {
-        if (display.getCommands().containsKey(userInput)) {
-            Command command = (Command) display.getCommands().get(userInput);
+        if (view.getCommands().containsKey(userInput)) {
+            Command command = (Command) view.getCommands().get(userInput);
             if (command.equals(Command.LOGIN)) {
-                display.handleLoginCommand();
+                view.handleLoginCommand();
             } else if (command.equals(Command.QUIT)) {
-                display.handleQuitCommand();
+                view.handleQuitCommand();
             }
         } else {
-            display.handleInvalidCommand();
+            view.handleInvalidCommand();
         }
     }
 
     /**
      * Sets a new display.
      */
-    public void setDisplay(View display) {
-        this.display.exit();
-        this.display = display;
-        this.display.enter();
+    public void setView(View view) {
+        this.view.exit();
+        this.view = view;
+        this.view.enter();
     }
 
     /**
