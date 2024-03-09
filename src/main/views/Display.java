@@ -1,7 +1,7 @@
-package main.views.cli.displays;
+package main.views;
 
-import main.views.cli.ClubManagementCLI;
-import main.views.cli.commands.Command;
+import main.ClubManagementCLI;
+import main.views.commands.Command;
 
 import java.util.*;
 

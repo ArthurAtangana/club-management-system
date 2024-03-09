@@ -1,4 +1,4 @@
-package main.views.cli.commands;
+package main.views.commands;
 
 public class LoginCommand implements Command {
 

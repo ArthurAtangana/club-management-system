@@ -1,9 +1,11 @@
-package main.views.cli;
+package main;
 
-import main.controllers.*;
 import main.models.*;
-import main.views.cli.displays.*;
-import main.views.cli.commands.*;
+import main.views.commands.Command;
+import main.views.commands.LoginCommand;
+import main.views.commands.QuitCommand;
+import main.views.Display;
+import main.views.WelcomeDisplay;
 
 import java.util.*;
 

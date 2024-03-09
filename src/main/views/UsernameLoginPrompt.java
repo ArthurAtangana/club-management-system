@@ -1,6 +1,6 @@
-package main.views.cli.displays;
+package main.views;
 
-import main.views.cli.ClubManagementCLI;
+import main.ClubManagementCLI;
 
 public class UsernameLoginPrompt extends Display {
 

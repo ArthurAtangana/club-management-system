@@ -1,8 +1,8 @@
-package main.views.cli.displays;
+package main.views;
 
 import main.controllers.LoginController;
 import main.controllers.UserController;
-import main.views.cli.ClubManagementCLI;
+import main.ClubManagementCLI;
 
 public class PasswordLoginPrompt extends Display {
 

@@ -1,7 +1,7 @@
-package main.views.cli.displays;
+package main.views;
 
-import main.views.cli.ClubManagementCLI;
-import main.views.cli.commands.*;
+import main.ClubManagementCLI;
+import main.views.commands.LoginCommand;
 
 /**
  * Class representing the welcome display for the Health and Fitness
