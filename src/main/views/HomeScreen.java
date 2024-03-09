@@ -17,8 +17,16 @@ public class HomeScreen extends View {
     }
 
     @Override
-    public void displayInfo() {
-        System.out.println("Welcome!");
+    public void printInfo() {
+        printLineBreak();
+        System.out.println(
+            """
+            Welcome! you are at the home screen for the
+            Health and Fitness Club.
+        
+            Where we put the HEALTH in fitness.
+            """
+        );
     }
 
     @Override

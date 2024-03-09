@@ -17,10 +17,12 @@ public class MemberDashboard extends View {
     }
 
     @Override
-    public void displayInfo() {
-        System.out.println("Displaying member dashboard ...");
-        System.out.println("=================================");
+    public void printInfo() {
+        printLineBreak();
+        System.out.println("Welcome " + context.getUser().getUsername() + "!");
+        System.out.println();
         System.out.println(context.getUser());
+        System.out.println();
     }
 
     @Override

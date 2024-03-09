@@ -24,19 +24,23 @@ public abstract class View {
     /**
      * Prints this display's contents.
      */
-    public void displayInfo() {}
+    public void printInfo() {}
 
     /**
      * Displays the commands the user can input.
      */
-    public void displayCommands() {
+    public void printCommands() {
         if (hasCommands()) {
-            System.out.println("===============");
-            System.out.println("Enter command: ");
+            printLineBreak();
+            System.out.println("What would you like to do?");
             for (String key: commands.keySet()) {
                 System.out.println(key + ": " + commands.get(key));
             }
         }
+    }
+
+    protected void printLineBreak() {
+        System.out.println("=============================================");
     }
 
     /**
@@ -56,8 +60,8 @@ public abstract class View {
      * Action to be performed upon entering this display.
      */
     public void enter() {
-        displayInfo();
-        displayCommands();
+        printInfo();
+        printCommands();
     }
 
     /**

@@ -9,7 +9,8 @@ public class UsernameLoginPrompt extends View {
     }
 
     @Override
-    public void displayInfo() {
+    public void printInfo() {
+        printLineBreak();
         System.out.println("Enter username:");
     }
 
