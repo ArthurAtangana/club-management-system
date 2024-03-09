@@ -3,6 +3,7 @@ package main.views;
 import main.controllers.LoginController;
 import main.controllers.UserController;
 import main.ClubManagementCLI;
+import main.models.User;
 
 public class PasswordLoginPrompt extends View {
 
@@ -23,10 +24,12 @@ public class PasswordLoginPrompt extends View {
 
         // Authenticate user
         if (loginController.authenticate(username, password)) {
+            // Set user for this session
             UserController profileController = new UserController();
             context.setUser(profileController.getUser(username));
             context.setView(new MemberDashboard(context));
         } else {
+            System.out.println("Username or password is invalid.");
             context.setView(new UsernameLoginPrompt(context));
         }
     }
