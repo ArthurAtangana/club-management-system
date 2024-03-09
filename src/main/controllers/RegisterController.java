@@ -9,17 +9,20 @@ package main.controllers;
  */
 public class RegisterController {
 
+    /**
+     * Default constructor.
+     */
     public RegisterController() {
-
+        // Expect there to be DB connection attributes here ...
     }
 
     /**
-     * Registers a new user.
+     * Registers a new user in the system.
      *
      * @param username Username of new user.
      * @param password Password for new user.
      */
     public void register(String username, String password) {
-
+        // THIS is where we will interact with the DB
     }
 }
