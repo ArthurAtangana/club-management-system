@@ -6,6 +6,6 @@ package main;
 public class ClubManagementSystem {
 
     public static void main(String[] args) {
-        new ClubManagementCLI();
+        new ClubManagementCLI().start();
     }
 }

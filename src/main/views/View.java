@@ -65,11 +65,6 @@ public abstract class View {
     }
 
     /**
-     * Action to be performed upon exiting this display.
-     */
-    public void exit() {}
-
-    /**
      * Handles the event of an invalid command.
      */
     public void handleInvalidCommand() {}

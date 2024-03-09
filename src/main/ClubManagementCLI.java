@@ -10,7 +10,7 @@ import java.util.*;
  * Health and Fitness Club Management System.
  *
  * @author Braeden Kloke
- * @version March 7, 2024
+ * @version March 8, 2024
  */
 public class ClubManagementCLI {
 
@@ -19,19 +19,26 @@ public class ClubManagementCLI {
     private Object buffer; // Utility buffer
     private View view;
 
+    /**
+     * Default constructor.
+     */
     public ClubManagementCLI() {
-
-        // Initialize system
-        Scanner scanner = new Scanner(System.in);
         user = new User();
-        view = new HomeScreen(this);
+        view = null;
         buffer = null;
+    }
 
-        setView(new HomeScreen(this));
+    /**
+     * Starts the CLI.
+     */
+    public void start() {
+        // Initialize objects
+        Scanner scanner = new Scanner(System.in);
+        setView(new HomeScreen(this)); // Initial view
 
+        // Start CLI
         while (true) {
             userInput = scanner.nextLine();
-
             if (view.hasCommands()) {
                 handleUserCommand();
             } else {
@@ -40,11 +47,10 @@ public class ClubManagementCLI {
         }
     }
 
-    /**
-     * Handles commands.
-     */
     private void handleUserCommand() {
+        // Check if user command is valid
         if (view.getCommands().containsKey(userInput)) {
+            // Check to see which command the user input
             Command command = (Command) view.getCommands().get(userInput);
             if (command.equals(Command.LOGIN)) {
                 view.handleLoginCommand();
@@ -59,36 +65,48 @@ public class ClubManagementCLI {
     }
 
     /**
-     * Sets a new display.
+     * Sets the view for this CLI.
+     *
+     * @param view View to be set.
      */
     public void setView(View view) {
-        this.view.exit();
         this.view = view;
         this.view.enter();
     }
 
     /**
-     * Sets the user for the system.
+     * Sets the current user of the system.
+     * The current user is assumed to be logged in.
+     *
+     * @param user Current user.
      */
     public void setUser(User user) {this.user = user;}
 
     /**
      * Retrieves the most recent user of the system.
+     *
+     * @return Most recent user of the system.
      */
     public User getUser() {return user;}
 
     /**
-     * Puts in an object in the buffer.
-     */
-    public void setBuffer(Object obj) {buffer = obj;}
-
-    /**
      * Retrieves the most recent user input.
+     *
+     * @return Most recent user input.
      */
     public String getUserInput() {return userInput;}
 
     /**
+     * Puts an object in the buffer.
+     *
+     * @param obj Object to be put in the buffer.
+     */
+    public void setBuffer(Object obj) {buffer = obj;}
+
+    /**
      * Retrieves the contents of the buffer.
+     *
+     * @return The contents of the buffer.
      */
     public Object getBuffer() {return buffer;}
 }

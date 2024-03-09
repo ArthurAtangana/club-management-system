@@ -3,7 +3,6 @@ package main.views;
 import main.controllers.LoginController;
 import main.controllers.UserController;
 import main.ClubManagementCLI;
-import main.models.User;
 
 public class PasswordLoginPrompt extends View {
 
