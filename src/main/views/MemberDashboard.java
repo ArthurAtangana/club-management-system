@@ -1,7 +1,6 @@
 package main.views;
 
 import main.ClubManagementCLI;
-import main.views.commands.QuitCommand;
 
 /**
  * Class representing the welcome display for the Health and Fitness
@@ -14,7 +13,7 @@ public class MemberDashboard extends View {
 
     public MemberDashboard(ClubManagementCLI context) {
         super(context);
-        commands.put("1", new QuitCommand());
+        commands.put("1", Command.QUIT);
     }
 
     @Override

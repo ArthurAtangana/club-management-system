@@ -1,7 +1,6 @@
 package main.views;
 
 import main.ClubManagementCLI;
-import main.views.commands.LoginCommand;
 
 /**
  * Class representing the welcome display for the Health and Fitness
@@ -14,7 +13,7 @@ public class HomeScreen extends View {
 
     public HomeScreen(ClubManagementCLI context) {
         super(context);
-        commands.put("1", new LoginCommand());
+        commands.put("1", Command.LOGIN);
     }
 
     @Override

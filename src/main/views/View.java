@@ -1,7 +1,6 @@
 package main.views;
 
 import main.ClubManagementCLI;
-import main.views.commands.Command;
 
 import java.util.*;
 

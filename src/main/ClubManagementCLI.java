@@ -1,9 +1,7 @@
 package main;
 
 import main.models.*;
-import main.views.commands.Command;
-import main.views.commands.LoginCommand;
-import main.views.commands.QuitCommand;
+import main.views.Command;
 import main.views.View;
 import main.views.HomeScreen;
 
@@ -51,9 +49,9 @@ public class ClubManagementCLI {
     private void handleUserCommand() {
         if (display.getCommands().containsKey(userInput)) {
             Command command = (Command) display.getCommands().get(userInput);
-            if (command instanceof LoginCommand) {
+            if (command.equals(Command.LOGIN)) {
                 display.handleLoginCommand();
-            } else if (command instanceof QuitCommand) {
+            } else if (command.equals(Command.QUIT)) {
                 display.handleQuitCommand();
             }
         } else {
