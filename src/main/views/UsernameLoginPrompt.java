@@ -2,6 +2,12 @@ package main.views;
 
 import main.ClubManagementCLI;
 
+/**
+ * Class representing the login prompt to retrieve the username.
+ *
+ * @author Braeden Kloke
+ * @version March 8, 2024
+ */
 public class UsernameLoginPrompt extends View {
 
     public UsernameLoginPrompt(ClubManagementCLI context) {

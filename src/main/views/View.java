@@ -5,11 +5,11 @@ import main.ClubManagementCLI;
 import java.util.*;
 
 /**
- * Abstract class representing a display for the Health and Fitness
+ * Abstract class representing a view for the Health and Fitness
  * Club System's CLI.
  *
  * @author Braeden Kloke
- * @version March 7, 2024
+ * @version March 8, 2024
  */
 public abstract class View {
 
@@ -22,12 +22,12 @@ public abstract class View {
     }
 
     /**
-     * Prints this display's contents.
+     * Prints this view's information.
      */
     public void printInfo() {}
 
     /**
-     * Displays the commands the user can input.
+     * Prints valid commands.
      */
     public void printCommands() {
         if (hasCommands()) {
@@ -44,20 +44,24 @@ public abstract class View {
     }
 
     /**
-     * Retrieves the commands for this display.
+     * Retrieves valid commands.
+     *
+     * @return Valid commands.
      */
     public Map getCommands() {
         return commands;
     }
 
     /**
-     * Returns true if this display has commands, false otherwise.
+     * Checks if this view has commands.
+     *
+     * @return True if view has commands, false otherwise.
      */
     public boolean hasCommands() {return !commands.isEmpty();}
 
 
     /**
-     * Action to be performed upon entering this display.
+     * Action to be performed upon entering this view.
      */
     public void enter() {
         printInfo();
@@ -84,5 +88,8 @@ public abstract class View {
      */
     public void handleUserInput() {}
 
+    /**
+     * Handles the event of a register command.
+     */
     public void handleRegisterCommand() {}
 }

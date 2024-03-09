@@ -4,6 +4,12 @@ import main.controllers.LoginController;
 import main.controllers.UserController;
 import main.ClubManagementCLI;
 
+/**
+ * Class representing the password prompt for logging into the system.
+ *
+ * @author Braeden Kloke
+ * @version March 8, 2024
+ */
 public class PasswordLoginPrompt extends View {
 
     public PasswordLoginPrompt(ClubManagementCLI context) {

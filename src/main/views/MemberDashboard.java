@@ -3,11 +3,11 @@ package main.views;
 import main.ClubManagementCLI;
 
 /**
- * Class representing the welcome display for the Health and Fitness
+ * Class representing the member dashboard for the Health and Fitness
  * Club System's CLI.
  *
  * @author Braeden Kloke
- * @version March 7, 2024
+ * @version March 8, 2024
  */
 public class MemberDashboard extends View {
 
