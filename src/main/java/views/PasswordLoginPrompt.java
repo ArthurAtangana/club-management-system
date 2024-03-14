@@ -1,8 +1,8 @@
-package main.views;
+package views;
 
-import main.controllers.LoginController;
-import main.controllers.UserController;
-import main.ClubManagementCLI;
+import ui.ClubManagementCLI;
+import controllers.LoginController;
+import controllers.UserController;
 
 /**
  * Class representing the password prompt for logging into the system.

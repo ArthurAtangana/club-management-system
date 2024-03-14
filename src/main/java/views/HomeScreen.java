@@ -1,6 +1,6 @@
-package main.views;
+package views;
 
-import main.ClubManagementCLI;
+import ui.ClubManagementCLI;
 
 /**
  * Class representing the home screen for the Health and Fitness
@@ -25,14 +25,7 @@ public class HomeScreen extends View {
     @Override
     public void printInfo() {
         printLineBreak();
-        System.out.println(
-            """
-            Welcome! you are at the home screen for the
-            Health and Fitness Club.
-        
-            Where we put the HEALTH in fitness.
-            """
-        );
+        System.out.println("Welcome! you are at the home screen for the Health and Fitness Club.");
     }
 
     @Override

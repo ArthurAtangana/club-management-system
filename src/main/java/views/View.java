@@ -1,6 +1,6 @@
-package main.views;
+package views;
 
-import main.ClubManagementCLI;
+import ui.ClubManagementCLI;
 
 import java.util.*;
 

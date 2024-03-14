@@ -1,7 +1,7 @@
-package main;
+package ui;
 
-import main.models.*;
-import main.views.*;
+import models.*;
+import views.*;
 
 import java.util.*;
 

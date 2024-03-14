@@ -1,4 +1,4 @@
-package main.views;
+package views;
 
 /**
  * Enum representing the commands a user can input.

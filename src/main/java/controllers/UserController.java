@@ -1,6 +1,6 @@
-package main.controllers;
+package controllers;
 
-import main.models.User;
+import models.User;
 
 /**
  * Class representing a controller for retrieving and updating users in the system.

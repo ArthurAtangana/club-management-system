@@ -1,4 +1,4 @@
-package main.controllers;
+package controllers;
 
 /**
  * Class representing a controller for registering a new user.
