@@ -1,4 +1,4 @@
-package main.controllers;
+package controllers;
 
 /**
  * Class representing a controller to handle login requests.

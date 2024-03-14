@@ -1,4 +1,4 @@
-package main.models;
+package models;
 
 /**
  * Class representing a fitness goal for a user.

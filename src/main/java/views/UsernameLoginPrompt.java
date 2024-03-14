@@ -1,6 +1,6 @@
-package main.views;
+package views;
 
-import main.ClubManagementCLI;
+import ui.ClubManagementCLI;
 
 /**
  * Class representing the login prompt to retrieve the username.

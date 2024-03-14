@@ -1,7 +1,7 @@
-package main.views;
+package views;
 
-import main.ClubManagementCLI;
-import main.controllers.RegisterController;
+import ui.ClubManagementCLI;
+import controllers.RegisterController;
 
 /**
  * Class representing the prompt to register a new user's password.

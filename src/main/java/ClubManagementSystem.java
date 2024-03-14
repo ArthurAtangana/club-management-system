@@ -1,4 +1,4 @@
-package main;
+import ui.ClubManagementCLI;
 
 /**
  * Class representing a Health and Fitness Club Management System.
