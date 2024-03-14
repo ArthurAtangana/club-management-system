@@ -19,8 +19,8 @@ public abstract class Controller {
      * Constructs a new Controller.
      */
     public Controller() {
-        url = "";
-        username = "";
+        url = "jdbc:postgresql://localhost:5432/assignment-3";
+        username = "braedenkloke";
         password = "";
     }
 
@@ -34,7 +34,7 @@ public abstract class Controller {
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
             connection.close();
-            return true; // No error thrown, connection is healthy
+            return true;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

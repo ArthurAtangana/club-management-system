@@ -11,7 +11,7 @@ import models.User;
 public class UserController extends Controller {
 
     public UserController() {
-        // Expect there to be DB connection attributes here ...
+        super();
     }
 
     /**

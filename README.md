@@ -25,10 +25,13 @@ mvn package
 
 <a id="build"></a>
 # Test
-In IntelliJ, make sure your `Test Source Folders` are set up as `src/test` before running the following command.
 ```
 mvn test
 ```
+## Troubleshooting
+* **Maven not finding your tests in IntelliJ?** 
+  * Make sure your `Test Source Folders` are set up as `src/test` before running Maven tests.
+  * Manually run the test first by navigating to the test file and clicking the green play button.
 
 
 <a id="build"></a>
