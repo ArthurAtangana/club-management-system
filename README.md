@@ -25,7 +25,9 @@ mvn package
 
 <a id="build"></a>
 # Test
-Tests are run manually by running the CLI!
+No unit tests yet.
+
+Test the CLI by running the program!
 
 
 <a id="build"></a>
