@@ -6,10 +6,9 @@ import models.User;
  * Class representing a controller for retrieving and updating users in the system.
  *
  * @author Braeden Kloke
- * @version March 7, 2024
- * Initialize interface and stub implementations.
+ * @version March 14, 2024
  */
-public class UserController {
+public class UserController extends Controller {
 
     public UserController() {
         // Expect there to be DB connection attributes here ...

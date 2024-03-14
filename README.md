@@ -25,9 +25,10 @@ mvn package
 
 <a id="build"></a>
 # Test
-No unit tests yet.
-
-Test the CLI by running the program!
+In IntelliJ, make sure your `Test Source Folders` are set up as `src/test` before running the following command.
+```
+mvn test
+```
 
 
 <a id="build"></a>
