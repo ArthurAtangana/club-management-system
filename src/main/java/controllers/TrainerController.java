@@ -7,5 +7,5 @@ package controllers;
  * @author Braeden Kloke
  * @version March 14, 2024
  */
-public class TrainerController extends Controller {
+public class TrainerController extends UserController {
 }

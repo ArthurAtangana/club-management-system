@@ -7,5 +7,5 @@ package controllers;
  * @author Braeden Kloke
  * @version March 14, 2024
  */
-public class AdminController extends Controller {
+public class AdminController extends UserController {
 }

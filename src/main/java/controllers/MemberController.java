@@ -7,7 +7,7 @@ package controllers;
  * @author Braeden Kloke
  * @version March 14, 2024
  */
-public class MemberController extends Controller {
+public class MemberController extends UserController {
 
     /**
      * Registers a new member in the system.
