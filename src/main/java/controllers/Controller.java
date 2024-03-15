@@ -1,6 +1,8 @@
 package controllers;
 
+import java.io.*;
 import java.sql.*;
+import java.util.Properties;
 
 /**
  * Abstract class representing a controller for accessing the
@@ -19,9 +21,21 @@ public abstract class Controller {
      * Constructs a new Controller.
      */
     public Controller() {
-        url = "jdbc:postgresql://localhost:5432/assignment-3";
-        username = "braedenkloke";
-        password = "";
+        File configFile = new File("config.properties");
+
+        try {
+            FileReader reader = new FileReader(configFile);
+            Properties props = new Properties();
+            props.load(reader);
+
+            url = props.getProperty("url");
+            username = props.getProperty("username");
+            password = props.getProperty("password");
+
+            reader.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
