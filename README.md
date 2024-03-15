@@ -19,6 +19,7 @@ COMP 3005 A
 <a id="build"></a>
 # Build
 ```
+mvn compile
 mvn package
 ```
 
@@ -36,4 +37,5 @@ mvn test
 
 <a id="build"></a>
 # Run
-In IntelliJ, navigate to `src/main/java/ClubManagementSystem.java` and run the `main` method.
+1. Update `config.properties` to reflect the database you will be connecting to.
+2. In IntelliJ, navigate to `src/main/java/ClubManagementSystem.java` and run the `main` method.

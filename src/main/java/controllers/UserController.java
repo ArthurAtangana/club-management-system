@@ -31,13 +31,4 @@ public class UserController extends Controller {
     public boolean authenticate(String userId, String password) {
         return true;
     }
-
-    /**
-     * Registers a new user in the system.
-     *
-     * @param firstName First name of new user.
-     * @param password Password for new user.
-     */
-    public void register(String firstName, String password) {
-    }
 }
