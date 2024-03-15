@@ -13,9 +13,9 @@ import java.util.Properties;
  */
 public abstract class Controller {
 
-    String url; // url of database
-    String username; // username of database
-    String password; // password of database
+    String databaseURL;
+    String databaseUsername;
+    String databasePassword;
 
     /**
      * Constructs a new Controller.
@@ -28,9 +28,9 @@ public abstract class Controller {
             Properties props = new Properties();
             props.load(reader);
 
-            url = props.getProperty("db.url");
-            username = props.getProperty("db.username");
-            password = props.getProperty("db.password");
+            databaseURL = props.getProperty("db.url");
+            databaseUsername = props.getProperty("db.username");
+            databasePassword = props.getProperty("db.password");
 
             reader.close();
         } catch (IOException e) {
@@ -46,7 +46,7 @@ public abstract class Controller {
      */
     public boolean getHealth() {
         try {
-            Connection connection = DriverManager.getConnection(url, username, password);
+            Connection connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
             connection.close();
             return true;
         } catch (SQLException e) {
