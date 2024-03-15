@@ -28,9 +28,9 @@ public abstract class Controller {
             Properties props = new Properties();
             props.load(reader);
 
-            url = props.getProperty("url");
-            username = props.getProperty("username");
-            password = props.getProperty("password");
+            url = props.getProperty("db.url");
+            username = props.getProperty("db.username");
+            password = props.getProperty("db.password");
 
             reader.close();
         } catch (IOException e) {
