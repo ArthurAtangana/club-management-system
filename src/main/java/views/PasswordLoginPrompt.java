@@ -1,7 +1,6 @@
 package views;
 
 import ui.ClubManagementCLI;
-import controllers.LoginController;
 import controllers.UserController;
 
 /**
@@ -23,13 +22,12 @@ public class PasswordLoginPrompt extends View {
 
     @Override
     public void handleUserInput() {
-        LoginController loginController = new LoginController();
         UserController profileController = new UserController();
         String username = (String) context.getBuffer();
         String password = context.getUserInput();
 
         // Authenticate user
-        if (loginController.authenticate(username, password)) {
+        if (profileController.authenticate(username, password)) {
             // Set user for this session
             context.setUser(profileController.getUser(username));
             context.setView(new MemberDashboard(context));
