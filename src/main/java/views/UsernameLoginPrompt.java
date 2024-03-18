@@ -24,6 +24,6 @@ public class UsernameLoginPrompt extends View {
     public void handleUserInput() {
         // Store username in buffer to use in authentication
         context.setBuffer(context.getUserInput());
-        context.setView(new PasswordLoginPrompt(context));
+        context.setView(new Prompt(context, "Enter password:", new AuthenticatingUser(context)));
     }
 }
