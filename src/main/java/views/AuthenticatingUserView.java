@@ -18,8 +18,8 @@ public class AuthenticatingUserView extends View {
     @Override
     public void enter() {
         UserController profileController = new UserController();
-        String username = (String) context.getBuffer();
-        String password = context.getUserInput();
+        String username = context.getUserInput(1);
+        String password = context.getUserInput(0);
 
         // Authenticate user
         System.out.println("Authenticating user ...");
