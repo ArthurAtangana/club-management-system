@@ -22,18 +22,6 @@ public class PasswordLoginPrompt extends View {
 
     @Override
     public void handleUserInput() {
-        UserController profileController = new UserController();
-        String username = (String) context.getBuffer();
-        String password = context.getUserInput();
-
-        // Authenticate user
-        if (profileController.authenticate(username, password)) {
-            // Set user for this session
-            context.setUser(profileController.getUser(username));
-            context.setView(new MemberDashboard(context));
-        } else {
-            System.out.println("Username or password is invalid.");
-            context.setView(new UsernameLoginPrompt(context));
-        }
+        context.setView(new AuthenticatingUser(context));
     }
 }
