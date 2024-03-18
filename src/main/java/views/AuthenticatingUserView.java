@@ -9,9 +9,9 @@ import ui.ClubManagementCLI;
  * @author Braeden Kloke
  * @version March 18, 2024
  */
-public class AuthenticatingUser extends View {
+public class AuthenticatingUserView extends View {
 
-    public AuthenticatingUser(ClubManagementCLI context) {
+    public AuthenticatingUserView(ClubManagementCLI context) {
         super(context);
     }
 
@@ -30,7 +30,7 @@ public class AuthenticatingUser extends View {
             context.setView(new MemberDashboard(context));
         } else {
             System.out.println("Username or password is invalid.");
-            context.setView(new UsernameLoginPrompt(context));
+            context.setView(new LoginView(context));
         }
     }
 }

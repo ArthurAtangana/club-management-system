@@ -35,7 +35,7 @@ public class HomeScreen extends View {
 
     @Override
     public void handleLoginCommand() {
-        context.setView(new UsernameLoginPrompt(context));
+        context.setView(new LoginView(context));
     }
 
     @Override
