@@ -31,7 +31,7 @@ INSERT INTO certificates (trainer_id, name) VALUES
 INSERT INTO equipment (name, recurrence, date_of_last_maintenance) VALUES
 ('Kettle Bell', 1000, '2024-01-01');
 
-INSERT INTO classes (class_name) VALUES ('Yoga');
+INSERT INTO classes (name) VALUES ('Yoga');
 
 INSERT INTO payments (member_id, class_id, amount) VALUES ((SELECT member_id FROM members WHERE user_id=(SELECT user_id FROM users WHERE first_name='Tom' AND last_name='Black')),
  (SELECT class_id FROM classes ORDER BY class_id LIMIT 1), 100);
@@ -41,11 +41,11 @@ INSERT INTO fitness_stats (member_id, goal_or_current, weight, hours, flexibilit
 
 INSERT INTO participants (member_id, class_id) VALUES ((SELECT member_id FROM members ORDER BY member_id LIMIT 1), (SELECT class_id FROM classes ORDER BY class_id LIMIT 1));
 
-INSERT INTO room (capacity) VALUES (20);
+INSERT INTO rooms (capacity) VALUES (20);
 
 INSERT INTO timeslots (class_id, trainer_id, room_id, day_of_week, time) VALUES (
 (SELECT class_id FROM classes ORDER BY class_id LIMIT 1),
 (SELECT trainer_id FROM trainers ORDER BY trainer_id LIMIT 1),
-(SELECT room_id FROM room ORDER BY room_id LIMIT 1),
+(SELECT room_id FROM rooms ORDER BY room_id LIMIT 1),
 'monday',
 '12:00:00');
