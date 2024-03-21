@@ -23,7 +23,6 @@ public class UsernameRegisterPrompt extends View {
     @Override
     public void handleUserInput() {
         // Add username to buffer to use in next view
-        context.setBuffer(context.getUserInput());
         context.setView(new PasswordRegisterPrompt(context));
     }
 }

@@ -1,39 +1,36 @@
 package views;
 
-import ui.ClubManagementCLI;
 import controllers.UserController;
+import ui.ClubManagementCLI;
 
 /**
- * Class representing the password prompt for logging into the system.
+ * Class representing the view for authenticating a user in the system.
  *
  * @author Braeden Kloke
- * @version March 8, 2024
+ * @version March 18, 2024
  */
-public class PasswordLoginPrompt extends View {
+public class AuthenticatingUserView extends View {
 
-    public PasswordLoginPrompt(ClubManagementCLI context) {
+    public AuthenticatingUserView(ClubManagementCLI context) {
         super(context);
     }
 
     @Override
-    public void printInfo() {
-        System.out.println("Enter password:");
-    }
-
-    @Override
-    public void handleUserInput() {
+    public void enter() {
         UserController profileController = new UserController();
-        String username = (String) context.getBuffer();
-        String password = context.getUserInput();
+        String username = context.getUserInput(1);
+        String password = context.getUserInput(0);
 
         // Authenticate user
+        System.out.println("Authenticating user ...");
         if (profileController.authenticate(username, password)) {
+            System.out.println("User authenticated.");
             // Set user for this session
             context.setUser(profileController.getUser(username));
             context.setView(new MemberDashboard(context));
         } else {
             System.out.println("Username or password is invalid.");
-            context.setView(new UsernameLoginPrompt(context));
+            context.setView(new LoginView(context));
         }
     }
 }

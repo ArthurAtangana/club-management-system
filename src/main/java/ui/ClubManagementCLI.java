@@ -10,14 +10,14 @@ import java.util.*;
  * Health and Fitness Club Management System.
  *
  * @author Braeden Kloke
- * @version March 8, 2024
+ * @version March 18, 2024
  */
 public class ClubManagementCLI {
 
     private User user; // User logged into system
-    private String userInput;
-    private Object buffer; // Utility buffer
+    private List<String> userInputs;
     private View view;
+
 
     /**
      * Default constructor.
@@ -25,7 +25,7 @@ public class ClubManagementCLI {
     public ClubManagementCLI() {
         user = new User();
         view = null;
-        buffer = null;
+        userInputs = new LinkedList<String>();
     }
 
     /**
@@ -38,7 +38,7 @@ public class ClubManagementCLI {
 
         // Start CLI
         while (true) {
-            userInput = scanner.nextLine();
+            userInputs.add(0, scanner.nextLine()); // keep history of user inputs
             if (view.hasCommands()) {
                 handleUserCommand();
             } else {
@@ -49,9 +49,9 @@ public class ClubManagementCLI {
 
     private void handleUserCommand() {
         // Check if user command is valid
-        if (view.getCommands().containsKey(userInput)) {
+        if (view.getCommands().containsKey(getMostRecentUserInput())) {
             // Check to see which command the user input
-            Command command = (Command) view.getCommands().get(userInput);
+            Command command = (Command) view.getCommands().get(getMostRecentUserInput());
             if (command.equals(Command.LOGIN)) {
                 view.handleLoginCommand();
             } else if (command.equals(Command.QUIT)) {
@@ -94,19 +94,16 @@ public class ClubManagementCLI {
      *
      * @return Most recent user input.
      */
-    public String getUserInput() {return userInput;}
+    public String getMostRecentUserInput() {return userInputs.get(0);}
 
     /**
-     * Puts an object in the buffer.
+     * Retrieves a user input from a given an index.
      *
-     * @param obj Object to be put in the buffer.
+     * @param index Index of the user input to retrieve.
+     *              Index 0 is the most recent user input.
+     * @return User input from the given index.
      */
-    public void setBuffer(Object obj) {buffer = obj;}
-
-    /**
-     * Retrieves the contents of the buffer.
-     *
-     * @return The contents of the buffer.
-     */
-    public Object getBuffer() {return buffer;}
+    public String getUserInput(int index) {
+        return userInputs.get(0);
+    }
 }

@@ -23,8 +23,8 @@ public class PasswordRegisterPrompt extends View {
     @Override
     public void handleUserInput() {
         MemberController registerController = new MemberController();
-        String username = (String) context.getBuffer();
-        String password = context.getUserInput();
+        String username = context.getUserInput(1);
+        String password = context.getMostRecentUserInput();
 
         System.out.println("Registering user ...");
         registerController.register(username, password);
