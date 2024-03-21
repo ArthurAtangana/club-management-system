@@ -3,35 +3,32 @@ package controllers;
 import models.User;
 
 /**
- * Class representing a controller for retrieving and updating users in the system.
+ * Class representing a controller for performing general operations on users
+ * in the Club Management System database. Users can be members, trainers or admin.
  *
  * @author Braeden Kloke
- * @version March 7, 2024
- * Initialize interface and stub implementations.
+ * @version March 14, 2024
  */
-public class UserController {
-
-    public UserController() {
-        // Expect there to be DB connection attributes here ...
-    }
+public class UserController extends Controller {
 
     /**
      * Retrieves a user from the system.
      *
-     * @param username Name of user.
+     * @param userId ID of user.
      * @return Profile of user.
      */
-    public User getUser(String username) {
-        // THIS is where we will interact with the DB
+    public User getUser(String userId) {
         return new User();
     }
 
     /**
-     * Updates a user's profile in the system.
+     * Authenticates a user of the system.
      *
-     * @param newProfile New profile to replace current profile with.
+     * @param userId ID of user.
+     * @param password User password.
+     * @return True if user authenticated, false otherwise.
      */
-    public void updateUser(User newProfile) {
-        // THIS is where we will interact with the DB
+    public boolean authenticate(String userId, String password) {
+        return true;
     }
 }

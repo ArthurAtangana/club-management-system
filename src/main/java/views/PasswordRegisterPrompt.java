@@ -1,7 +1,7 @@
 package views;
 
+import controllers.*;
 import ui.ClubManagementCLI;
-import controllers.RegisterController;
 
 /**
  * Class representing the prompt to register a new user's password.
@@ -22,7 +22,7 @@ public class PasswordRegisterPrompt extends View {
 
     @Override
     public void handleUserInput() {
-        RegisterController registerController = new RegisterController();
+        MemberController registerController = new MemberController();
         String username = (String) context.getBuffer();
         String password = context.getUserInput();
 

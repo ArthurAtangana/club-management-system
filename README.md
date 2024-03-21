@@ -19,17 +19,23 @@ COMP 3005 A
 <a id="build"></a>
 # Build
 ```
+mvn compile
 mvn package
 ```
 
 
 <a id="build"></a>
 # Test
-No unit tests yet.
-
-Test the CLI by running the program!
+```
+mvn test
+```
+## Troubleshooting
+* **Maven not finding your tests in IntelliJ?** 
+  * Make sure your `Test Source Folders` are set up as `src/test` before running Maven tests.
+  * Manually run the test first by navigating to the test file and clicking the green play button.
 
 
 <a id="build"></a>
 # Run
-In IntelliJ, navigate to `src/main/java/ClubManagementSystem.java` and run the `main` method.
+1. Update `config.properties` to reflect the database you will be connecting to.
+2. In IntelliJ, navigate to `src/main/java/ClubManagementSystem.java` and run the `main` method.
