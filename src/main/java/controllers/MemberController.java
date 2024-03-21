@@ -12,9 +12,11 @@ public class MemberController extends UserController {
     /**
      * Registers a new member in the system.
      *
-     * @param firstName First name of new user.
-     * @param password Password for new user.
+     * @param firstName First name of new member.
+     * @param lastName Last name of new member.
+     * @param email Email of new member.
+     * @param password Password for new member.
      */
-    public void register(String firstName, String password) {
+    public void register(String firstName, String lastName, String email, String password) {
     }
 }

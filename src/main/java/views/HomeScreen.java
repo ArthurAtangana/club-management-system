@@ -39,5 +39,5 @@ public class HomeScreen extends View {
     }
 
     @Override
-    public void handleRegisterCommand() {context.setView(new UsernameRegisterPrompt(context));}
+    public void handleRegisterCommand() {context.setView(new RegisterView(context));}
 }
