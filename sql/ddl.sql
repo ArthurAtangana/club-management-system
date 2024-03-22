@@ -63,7 +63,7 @@ CREATE TABLE timeslots
     timeslot_id SERIAL PRIMARY KEY,
     class_id    INT REFERENCES classes (class_id),
     trainer_id  INT REFERENCES trainers (trainer_id),
-    room_id     INT REFERENCES room (room_id),
+    room_id     INT REFERENCES rooms (room_id),
     day_of_week D_O_W     NOT NULL,
     time        TIME_SLOT NOT NULL
 );

@@ -2,7 +2,7 @@ delete from certificates;
 delete from participants;
 delete from timeslots;
 delete from classes;
-delete from room;
+delete from rooms;
 delete from fitness_stats;
 delete from payments;
 delete from equipment;
