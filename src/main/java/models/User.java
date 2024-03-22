@@ -1,4 +1,4 @@
-package models;
+package main.java.models;
 
 import java.util.Collection;
 
@@ -18,8 +18,8 @@ public class User {
 
     private String username;
     private Group group;
-    private Collection<FitnessGoal> fitnessGoals;
-    private Collection<HealthMetric> healthMetrics;
+    private Collection<models.FitnessGoal> fitnessGoals;
+    private Collection<models.HealthMetric> healthMetrics;
 
 
     /**
@@ -27,6 +27,16 @@ public class User {
      */
     public User() {
         username = "braeden";
+        group = Group.MEMBER;
+        fitnessGoals = null;
+        healthMetrics = null;
+    }
+
+    /**
+     * Default constructor.
+     */
+    public User(int user_id, String first_name, String last_name, String email, String password) {
+        this.username = first_name + " " + last_name;
         group = Group.MEMBER;
         fitnessGoals = null;
         healthMetrics = null;
