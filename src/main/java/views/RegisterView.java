@@ -18,6 +18,7 @@ public class RegisterView extends View {
     @Override
     public void enter() {
         // Construct flow from prompts to register member in system.
+        printLineBreak();
         View registering = new RegisteringMemberView(context);
         View passwordPrompt = new Prompt(context, "Enter password: ", registering);
         View emailPrompt = new Prompt(context, "Enter email: ", passwordPrompt);

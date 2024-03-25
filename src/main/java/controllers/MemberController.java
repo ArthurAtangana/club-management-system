@@ -1,5 +1,7 @@
 package controllers;
 
+import org.postgresql.util.PSQLException;
+
 import java.sql.*;
 
 /**
@@ -19,7 +21,7 @@ public class MemberController extends UserController {
      * @param email Email of new member.
      * @param password Password for new member.
      */
-    public void register(String firstName, String lastName, String email, String password) {
+    public boolean register(String firstName, String lastName, String email, String password) {
         Connection connection;
         try {
             connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
@@ -30,32 +32,43 @@ public class MemberController extends UserController {
         String memberInsertQuery = "INSERT INTO members (user_id) VALUES ((SELECT user_id FROM users WHERE email=?))";
         try {
             // add user to user table
-            PreparedStatement statement = connection.prepareStatement(userInsertQuery);
-            statement.setString(1,firstName);
-            statement.setString(2,lastName);
-            statement.setString(3,email);
-            statement.setString(4,password);
-            System.out.println(statement);
-            int insertedRow = statement.executeUpdate();
+            PreparedStatement userStatement = connection.prepareStatement(userInsertQuery);
+            userStatement.setString(1,firstName);
+            userStatement.setString(2,lastName);
+            userStatement.setString(3,email);
+            userStatement.setString(4,password);
+            int insertedRow = userStatement.executeUpdate();
             if (insertedRow > 0) {
-                System.out.println("user registration successfull");
+                System.out.println("User registration successful");
             } else {
-                //TODO: create error and loop back
-                System.out.println("email already registered");
-                throw new RuntimeException();
+                System.out.println("Failed to register user.");
+                connection.close();
+                return false;
             }
+        } catch (SQLException e) {
+            if (e instanceof PSQLException && e.getSQLState().equals("23505")) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                return false;
+            } else {
+                throw new RuntimeException(e);
+            }
+        }
+        try {
             // add user to member table
             PreparedStatement memberStatement = connection.prepareStatement(memberInsertQuery);
             memberStatement.setString(1,email);
-            System.out.println(memberStatement);
             int insertedMemberRows = memberStatement.executeUpdate();
             if (insertedMemberRows > 0){
-                System.out.println("member registered");
+                connection.close();
+                return true;
             } else {
-                System.out.println("failed to add member in member table");
+                System.out.println("Failed to add member in member table");
                 throw new RuntimeException();
             }
-            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
