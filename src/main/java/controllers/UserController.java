@@ -1,6 +1,7 @@
 package controllers;
 
 import Records.UserData;
+import Utils.UserDoesNotExistError;
 
 import java.sql.*;
 
@@ -59,14 +60,23 @@ public class UserController extends Controller {
      */
     public boolean authenticate(String userId, String password) {
         // TODO: type check userId somewhere, probably not here
-        System.out.println("UserId: " + userId);
-        System.out.println("Given password: " + userId);
-        System.out.println("DB password: " + getUserPassword(Integer.parseInt(userId)));
-        System.out.println(password.equals(getUserPassword(Integer.parseInt(userId))));
-        return password.equals(getUserPassword(Integer.parseInt(userId)));
+        String dbPassword;
+        try {
+            dbPassword = getUserPassword(Integer.parseInt(userId));
+        } catch (UserDoesNotExistError e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return password.equals(dbPassword);
     }
 
-    private String getUserPassword(int userId) {
+    /**
+     * Get a users password form the database.
+     * @param userId Id of the user.
+     * @return Password of the user.
+     * @throws UserDoesNotExistError Thrown if the user does not exist.
+     */
+    private String getUserPassword(int userId) throws UserDoesNotExistError {
         Connection connection;
         try {
             connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
@@ -79,12 +89,11 @@ public class UserController extends Controller {
             Statement statement = connection.createStatement();
             statement.executeQuery(query);
             ResultSet resultSet = statement.getResultSet();
+
             if (resultSet.next()) {
                 password = resultSet.getString("password");
             } else {
-                System.out.println("user " + userId + " does not exist!");
-                // TODO: create a user does not exist error
-                throw new RuntimeException();
+                throw new UserDoesNotExistError(userId);
             }
             connection.close();
         } catch (SQLException e) {
