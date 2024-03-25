@@ -1,6 +1,6 @@
-package main.java.controllers;
+package controllers;
 
-import main.java.models.User;
+import Records.UserData;
 
 import java.sql.*;
 
@@ -19,40 +19,33 @@ public class UserController extends Controller {
      * @param userId ID of user.
      * @return Profile of user.
      */
-    public User getUser(String userId) {
+    public UserData getUser(String userId) {
         Connection connection;
         try {
             connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        String query = "SELECT * FROM users WHERE user_id=" + userId + ";";
-        User user = null;
+        String query = "SELECT * FROM users WHERE user_id=" + Integer.parseInt(userId) + ";";
+        UserData user = null;
         try {
             Statement statement = connection.createStatement();
             statement.executeQuery(query);
             ResultSet resultSet = statement.getResultSet();
             if (resultSet.next()) {
-                user = new User(
+                user = new UserData(
                         resultSet.getInt("user_id"),
-                        resultSet.getString("fist_name"),
+                        resultSet.getString("first_name"),
                         resultSet.getString("last_name"),
                         resultSet.getString("email"),
                         resultSet.getString("password"));
             } else {
                 System.out.println("user " + userId + " does not exist!");
             }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        try {
             connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
 
         return user;
     }
@@ -65,6 +58,39 @@ public class UserController extends Controller {
      * @return True if user authenticated, false otherwise.
      */
     public boolean authenticate(String userId, String password) {
-        return true;
+        // TODO: type check userId somewhere, probably not here
+        System.out.println("UserId: " + userId);
+        System.out.println("Given password: " + userId);
+        System.out.println("DB password: " + getUserPassword(Integer.parseInt(userId)));
+        System.out.println(password.equals(getUserPassword(Integer.parseInt(userId))));
+        return password.equals(getUserPassword(Integer.parseInt(userId)));
+    }
+
+    private String getUserPassword(int userId) {
+        Connection connection;
+        try {
+            connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        String query = "SELECT password FROM users WHERE user_id=" + userId + ";";
+        String password;
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeQuery(query);
+            ResultSet resultSet = statement.getResultSet();
+            if (resultSet.next()) {
+                password = resultSet.getString("password");
+            } else {
+                System.out.println("user " + userId + " does not exist!");
+                // TODO: create a user does not exist error
+                throw new RuntimeException();
+            }
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return password;
     }
 }

@@ -1,6 +1,6 @@
 package ui;
 
-import models.*;
+import Records.UserData;
 import views.*;
 
 import java.util.*;
@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class ClubManagementCLI {
 
-    private User user; // User logged into system
+    private UserData user; // User logged into system
     private List<String> userInputs;
     private View view;
 
@@ -23,7 +23,7 @@ public class ClubManagementCLI {
      * Default constructor.
      */
     public ClubManagementCLI() {
-        user = new User();
+        user = new UserData(0, "foo", "bar", "baz", "password");
         view = null;
         userInputs = new LinkedList<String>();
     }
@@ -80,14 +80,14 @@ public class ClubManagementCLI {
      *
      * @param user Current user.
      */
-    public void setUser(User user) {this.user = user;}
+    public void setUser(UserData user) {this.user = user;}
 
     /**
      * Retrieves the most recent user of the system.
      *
      * @return Most recent user of the system.
      */
-    public User getUser() {return user;}
+    public UserData getUser() {return user;}
 
     /**
      * Retrieves the most recent user input.
@@ -104,6 +104,6 @@ public class ClubManagementCLI {
      * @return User input from the given index.
      */
     public String getUserInput(int index) {
-        return userInputs.get(0);
+        return userInputs.get(index);
     }
 }

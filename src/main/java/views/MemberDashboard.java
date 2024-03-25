@@ -1,5 +1,6 @@
 package views;
 
+import Records.UserData;
 import ui.ClubManagementCLI;
 
 /**
@@ -18,10 +19,11 @@ public class MemberDashboard extends View {
 
     @Override
     public void printInfo() {
+        UserData user = context.getUser();
         printLineBreak();
-        System.out.println("Welcome " + context.getUser().getUsername() + "!");
+        System.out.println("Welcome " + user.firstName() + " " + user.lastName() + "!");
         System.out.println();
-        System.out.println(context.getUser());
+        System.out.println(user);
         System.out.println();
     }
 

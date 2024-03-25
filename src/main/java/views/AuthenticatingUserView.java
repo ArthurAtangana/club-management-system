@@ -18,15 +18,15 @@ public class AuthenticatingUserView extends View {
     @Override
     public void enter() {
         UserController profileController = new UserController();
-        String username = context.getUserInput(1);
+        String userId = context.getUserInput(1);
         String password = context.getUserInput(0);
 
         // Authenticate user
         System.out.println("Authenticating user ...");
-        if (profileController.authenticate(username, password)) {
+        if (profileController.authenticate(userId, password)) {
             System.out.println("User authenticated.");
             // Set user for this session
-            context.setUser(profileController.getUser(username));
+            context.setUser(profileController.getUser(userId));
             context.setView(new MemberDashboard(context));
         } else {
             System.out.println("Username or password is invalid.");
