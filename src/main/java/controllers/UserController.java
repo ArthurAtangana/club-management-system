@@ -85,7 +85,6 @@ public class UserController extends Controller {
         }
         String query = "SELECT password FROM users WHERE user_id=" + userId + ";";
         String password;
-        System.out.println(query);
         try {
             Statement statement = connection.createStatement();
             statement.executeQuery(query);
