@@ -1,6 +1,6 @@
 package ui;
 
-import Records.UserData;
+import records.UserData;
 import views.*;
 
 import java.util.*;

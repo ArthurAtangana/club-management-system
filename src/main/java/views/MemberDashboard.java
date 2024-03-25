@@ -1,6 +1,6 @@
 package views;
 
-import Records.UserData;
+import records.UserData;
 import ui.ClubManagementCLI;
 
 /**

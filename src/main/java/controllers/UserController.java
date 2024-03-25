@@ -1,7 +1,7 @@
 package controllers;
 
-import Records.UserData;
-import Utils.UserDoesNotExistError;
+import records.UserData;
+import utils.UserDoesNotExistError;
 
 import java.sql.*;
 

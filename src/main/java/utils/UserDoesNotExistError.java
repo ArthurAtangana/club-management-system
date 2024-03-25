@@ -1,4 +1,4 @@
-package Utils;
+package utils;
 
 public class UserDoesNotExistError extends RuntimeException{
     public UserDoesNotExistError(int userId) {
