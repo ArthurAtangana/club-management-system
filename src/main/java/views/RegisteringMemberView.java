@@ -19,8 +19,13 @@ public class RegisteringMemberView extends View {
         String email = context.getUserInput(1);
         String password = context.getUserInput(0);
         System.out.println("Registering new member ...");
-        new MemberController().register(firstName, lastName, email, password);
-        System.out.println("New member registered.");
-        context.setView(new HomeScreen(context));
+        MemberController memberController = new MemberController();
+        if (memberController.register(firstName,lastName,email,password)){
+            System.out.println("New member registered.");
+            context.setView(new HomeScreen(context));
+        } else {
+            System.out.println("Invalid email");
+            context.setView(new HomeScreen(context));
+        }
     }
 }
