@@ -1,7 +1,7 @@
 package utils;
 
 public class UserDoesNotExistError extends RuntimeException{
-    public UserDoesNotExistError(int userId) {
-        super("User " + userId + " does not exist!");
+    public UserDoesNotExistError(String userIdentifier) {
+        super("User " + userIdentifier + " does not exist!");
     }
 }
