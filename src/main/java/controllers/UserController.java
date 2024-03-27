@@ -19,8 +19,9 @@ public class UserController extends Controller {
      *
      * @param userIdentifier userId or email of the user.
      * @return Profile of user.
+     * @throws UserDoesNotExistError Thrown if the user does not exist.
      */
-    public UserData getUser(String userIdentifier) {
+    public UserData getUser(String userIdentifier) throws UserDoesNotExistError {
         Connection connection;
         try {
             connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
@@ -33,7 +34,7 @@ public class UserController extends Controller {
         } catch (NumberFormatException e) {
             query = "SELECT * FROM users WHERE email='" + userIdentifier + "';";
         }
-        UserData user = null;
+        UserData user;
         try {
             Statement statement = connection.createStatement();
             statement.executeQuery(query);
@@ -46,7 +47,7 @@ public class UserController extends Controller {
                         resultSet.getString("email"),
                         resultSet.getString("password"));
             } else {
-                System.out.println("user " + userIdentifier + " does not exist!");
+                throw new UserDoesNotExistError("User", String.valueOf(userIdentifier));
             }
             connection.close();
         } catch (SQLException e) {
@@ -81,36 +82,6 @@ public class UserController extends Controller {
      * @throws UserDoesNotExistError Thrown if the user does not exist.
      */
     private String getUserPassword(String userIdentifier) throws UserDoesNotExistError {
-        Connection connection;
-        try {
-            connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        String query;
-        try {
-            query = "SELECT password FROM users WHERE user_id=" + Integer.parseInt(userIdentifier) + ";";
-        } catch (NumberFormatException e) {
-            query = "SELECT password FROM users WHERE email='" + userIdentifier + "';";
-        }
-
-        String password;
-        try {
-            Statement statement = connection.createStatement();
-            statement.executeQuery(query);
-            ResultSet resultSet = statement.getResultSet();
-
-            if (resultSet.next()) {
-                password = resultSet.getString("password");
-            } else {
-                throw new UserDoesNotExistError(String.valueOf(userIdentifier));
-            }
-            connection.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return password;
+        return getUser(userIdentifier).password();
     }
 }

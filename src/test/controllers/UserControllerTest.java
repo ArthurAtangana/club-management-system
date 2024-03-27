@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import records.UserData;
+import utils.UserDoesNotExistError;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,8 +29,7 @@ class UserControllerTest {
         assertEquals(user.password(), dbUserData.password());
 
         // test looking for a user that is not in the database
-        UserData dbUserData2 = userController.getUser("999");
-        assertNull(dbUserData2);
+        assertThrows(UserDoesNotExistError.class, () -> userController.getUser("999"));
 
         // test getting a user from the database by email
         UserData dbUserData3 = userController.getUser("john.smith@example.com");
@@ -39,8 +39,7 @@ class UserControllerTest {
         assertEquals(user.password(), dbUserData3.password());
 
         // test looking for a user that is not in the database by email
-        UserData dbUserData4 = userController.getUser("iNoExist");
-        assertNull(dbUserData4);
+        assertThrows(UserDoesNotExistError.class, () -> userController.getUser("iNoExist"));
     }
 
     @Test

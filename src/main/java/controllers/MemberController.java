@@ -1,5 +1,10 @@
 package controllers;
 
+import records.MemberData;
+import utils.UserDoesNotExistError;
+
+import java.sql.*;
+
 /**
  * Class representing a controller for performing operations on members
  * in the Club Management System database.
@@ -18,5 +23,45 @@ public class MemberController extends UserController {
      * @param password Password for new member.
      */
     public void register(String firstName, String lastName, String email, String password) {
+    }
+
+    /**
+     * Retrieves a member from the system.
+     *
+     * @param userIdentifier userId or email of the member.
+     * @return Profile of member.
+     * @throws UserDoesNotExistError Thrown if the user does not exist.
+     */
+    public MemberData getMember(String userIdentifier) throws UserDoesNotExistError {
+        Connection connection;
+        try {
+            connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        String query;
+        try {
+            query = "SELECT * FROM members WHERE user_id=" + Integer.parseInt(userIdentifier) + ";";
+        } catch (NumberFormatException e) {
+            query = "SELECT * FROM members WHERE user_id=(SELECT user_id FROM users WHERE email='" + userIdentifier + "');";
+        }
+        MemberData member;
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeQuery(query);
+            ResultSet resultSet = statement.getResultSet();
+            if (resultSet.next()) {
+                member = new MemberData(
+                        resultSet.getInt("user_id"),
+                        resultSet.getInt("member_id"));
+            } else {
+                throw new UserDoesNotExistError("Member", String.valueOf(userIdentifier));
+            }
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return member;
     }
 }
