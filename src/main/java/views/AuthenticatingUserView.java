@@ -26,7 +26,7 @@ public class AuthenticatingUserView extends View {
         if (profileController.authenticate(userId, password)) {
             System.out.println("User authenticated.");
             // Set user for this session
-            context.setUser(profileController.getUser(userId));
+            context.setUser(profileController.getUser(userId));// no need to catch error since the user was authenticated, so we know it exists
             context.setView(new MemberDashboard(context));
         } else {
             System.out.println("Username or password is invalid.");
